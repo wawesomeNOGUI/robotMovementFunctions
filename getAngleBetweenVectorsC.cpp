@@ -1,5 +1,6 @@
 #include "math.h"
-#include <stdio.h>
+//#include <stdio.h>
+#include <iostream>
 
 #define PI 3.14159265
 
@@ -15,9 +16,9 @@ struct vector2 *yawVector = new vector2();
 struct vector2 *travelVector = new vector2();
 
 //takes x,y of point you want to travel to
-double calcAngleBetweenYAndT(double x, double y)
+double calcAngleBetweenYAndT(double x, double y, double rYaw)
 {
-  double yaw = 30 * PI / 180;  //yaw() returns degrees
+  double yaw = rYaw * PI / 180;  //yaw() returns degrees
 
   //get unit circle x,y from yaw angle
   yawVector->x = cos(yaw);
@@ -56,6 +57,21 @@ double calcAngleBetweenYAndT(double x, double y)
 }
 
 int main () {
-    printf("%f", calcAngleBetweenYAndT(-86.5, -44));
+  double x, y, rYaw;
+LABEL:
+    //printf("%f", calcAngleBetweenYAndT(-86.5, -44));
+  std::cout << "X: ";
+  std::cin >> x;
+  std::cout << "\n";
+  std::cout << "Y: ";
+  std::cin >> y;
+  std::cout << "\n";
+  std::cout << "rYaw: ";
+  std::cin >> rYaw;
+  std::cout << "\n";
+
+  std::cout << calcAngleBetweenYAndT(x, y, rYaw) << "\n";
+
+goto LABEL;
     return 1;
 }
